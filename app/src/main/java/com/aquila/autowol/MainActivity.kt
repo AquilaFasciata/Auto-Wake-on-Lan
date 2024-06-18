@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.AddCircle
@@ -34,8 +35,11 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize(),
                     floatingActionButtonPosition = FabPosition.End,
                     floatingActionButton = {
-                        FloatingActionButton(onClick = { println("HELLO") }) {
-                            Icon(Icons.Default.AddCircle, contentDescription = "Ted")
+                        FloatingActionButton(
+                            onClick = { println("HELLO") },
+                            shape = MaterialTheme.shapes.medium.copy(CornerSize(percent = 50))
+                        ) {
+                            Icon(Icons.Default.Add, contentDescription = "Ted")
                         }
                     }
                     ) { innerPadding ->
