@@ -27,49 +27,51 @@ import androidx.compose.material3.TopAppBar
 import com.aquila.autowol.ui.theme.AutoWolTheme
 
 class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            AutoWolTheme {
-                Scaffold(modifier = Modifier.fillMaxSize(),
-                    floatingActionButtonPosition = FabPosition.End,
-                    floatingActionButton = {
-                        FloatingActionButton(
-                            onClick = { println("HELLO") },
-                            shape = MaterialTheme.shapes.medium.copy(CornerSize(percent = 50))
-                        ) {
-                            Icon(Icons.Default.Add, contentDescription = "Ted")
-                        }
-                    }
-                    ) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    enableEdgeToEdge()
+    setContent {
+      AutoWolTheme {
+        Scaffold(
+          modifier = Modifier.fillMaxSize(),
+          floatingActionButtonPosition = FabPosition.End,
+          floatingActionButton = {
+            FloatingActionButton(
+              onClick = { println("HELLO") },
+              shape = MaterialTheme.shapes.medium.copy(CornerSize(percent = 50))
+            ) {
+              Icon(Icons.Default.Add, contentDescription = "Ted")
             }
+          },
+
+          ) { innerPadding ->
+          Greeting(
+            name = "Android",
+            modifier = Modifier.padding(innerPadding)
+          )
         }
+      }
     }
+  }
 }
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Surface (
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.surface
-    ) {
-        Text(
-            text = "Hello $name!",
-            modifier = modifier
-        )
-    }
+  Surface(
+    modifier = Modifier.fillMaxSize(),
+    color = MaterialTheme.colorScheme.surface
+  ) {
+    Text(
+      text = "Hello $name!",
+      modifier = modifier
+    )
+  }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    AutoWolTheme {
-        Greeting("Android")
-    }
+  AutoWolTheme {
+    Greeting("Android")
+  }
 }
