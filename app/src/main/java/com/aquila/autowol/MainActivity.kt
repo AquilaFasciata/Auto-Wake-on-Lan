@@ -1,11 +1,15 @@
 package com.aquila.autowol
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -22,6 +26,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.aquila.autowol.ui.theme.AutoWolTheme
 
@@ -67,6 +73,23 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
+fun DeviceListing(compName: String, devIcon: Int) {
+  Row {
+    Icon(
+      painter = painterResource(id = devIcon),
+      contentDescription = "Device icon",
+      modifier = Modifier.border(4.dp, Color(MaterialTheme.colorScheme.onSecondaryContainer, ))
+    )
+  }
+}
+
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun DeviceListingPreview() {
+  DeviceListing(compName = "Computer 1", devIcon = R.drawable.desktop_windows)
+}
+
+@Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
   Surface(
     modifier = Modifier.fillMaxSize(),
@@ -79,10 +102,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
   }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GreetingPreview() {
   AutoWolTheme {
-    Greeting("Android")
   }
 }
