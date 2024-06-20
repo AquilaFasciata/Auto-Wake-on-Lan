@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -82,8 +83,8 @@ class MainActivity : ComponentActivity() {
 fun DeviceListing(compName: String, devIcon: Int) {
   Surface(
     color = MaterialTheme.colorScheme.surfaceVariant,
-    modifier = Modifier.fillMaxWidth(),
-    shape = MaterialTheme.shapes.medium
+    modifier = Modifier.fillMaxWidth().height(85.dp),
+    shape = MaterialTheme.shapes.large,
     ) {
     Row {
       Icon(
@@ -93,6 +94,7 @@ fun DeviceListing(compName: String, devIcon: Int) {
           .size(60.dp)
           .clip(CircleShape)
           .scale(scale = 0.8f)
+          .align(Alignment.CenterVertically)
       )
 
       Spacer(modifier = Modifier.width(8.dp))
