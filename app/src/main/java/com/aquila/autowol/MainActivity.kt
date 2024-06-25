@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -69,10 +70,12 @@ class MainActivity : ComponentActivity() {
             )
           }
         ) { innerPadding ->
-          Greeting(
-            name = "Android",
-            modifier = Modifier.padding(innerPadding)
-          )
+          Column (modifier = Modifier.padding(innerPadding)) {
+            DeviceListing(
+              compName = "Computer",
+              devIcon = R.drawable.desktop_windows
+            )
+          }
         }
       }
     }
@@ -81,9 +84,12 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun DeviceListing(compName: String, devIcon: Int) {
-  Surface(
+  Surface (
     color = MaterialTheme.colorScheme.surfaceVariant,
-    modifier = Modifier.fillMaxWidth().height(85.dp),
+    modifier = Modifier
+      .padding(all = 6.dp)
+      .fillMaxWidth()
+      .height(85.dp),
     shape = MaterialTheme.shapes.large,
     ) {
     Row {
